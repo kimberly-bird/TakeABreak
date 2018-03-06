@@ -9,6 +9,16 @@ namespace TakeABreak.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        [StringLength(55, ErrorMessage = "Please enter your nickname")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [StringLength(55, ErrorMessage = "Sorry, too long")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

@@ -11,9 +11,10 @@ using TakeABreak.Data;
 namespace TakeABreak.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180306163047_InitialMigrationWithModels")]
+    partial class InitialMigrationWithModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

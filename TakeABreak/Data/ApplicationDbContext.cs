@@ -12,8 +12,11 @@ namespace TakeABreak.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-        }
+        { }
+
+        public DbSet<Day> Day { get; set; }
+        public DbSet<Break> Break { get; set; }
+        public DbSet<BreakType> BreakType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

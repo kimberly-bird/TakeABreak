@@ -12,7 +12,7 @@ namespace TakeABreak.Data
     public static class DbInitializer
     {
         // Seed the database
-        public static void Initialize(IServiceProvider services, UserManager<ApplicationUser> userManager)
+        public static void Initialize(IServiceProvider services)
         {
             // The pattern of 'using' handles the opening and closing of the 
             // database connection
@@ -66,23 +66,6 @@ namespace TakeABreak.Data
                         context.BreakType.Add(i);
                     }
                     context.SaveChanges();
-                }
-            }
-        }
-        // This method will seed users into the database
-        public static async void AddUsers(IServiceProvider services, UserManager<ApplicationUser> userManager, string UserName)
-        {
-            using (var context = services.GetRequiredService<ApplicationDbContext>())
-            {
-                var user = await userManager.FindByNameAsync(UserName);
-
-                if (user == null)
-                {
-                    user = new ApplicationUser { UserName = UserName };
-                    user.FirstName = UserName;
-                    user.LastName = UserName;
-                    user.Email = UserName;
-                    await userManager.CreateAsync(user, "123Abc$");
                 }
             }
         }

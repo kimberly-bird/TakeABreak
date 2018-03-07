@@ -15,12 +15,12 @@ namespace TakeABreak.Models
         public ApplicationUser User { get; set; }
 
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
 
         [Required]
         public int PointsGoal { get; set; }
 
-        [Required]
         public int ProductivityRating { get; set; }
 
         public string Reminders { get; set; }

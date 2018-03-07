@@ -1,0 +1,42 @@
+﻿@model TakeABreak.Models.Day
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Day</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PointsGoal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PointsGoal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductivityRating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductivityRating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Reminders)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reminders)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.DayId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

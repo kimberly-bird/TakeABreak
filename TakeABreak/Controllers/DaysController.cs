@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,16 @@ namespace TakeABreak.Controllers
     public class DaysController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public DaysController(ApplicationDbContext context)
+        public DaysController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+
+        // This task retrieves the currently authenticated user
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Days
         public async Task<IActionResult> Index()
@@ -56,8 +62,14 @@ namespace TakeABreak.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DayId,Date,PointsGoal,ProductivityRating,Reminders")] Day day)
         {
+            ModelState.Remove("User");
+            //gets the current user
+            ApplicationUser user = await GetCurrentUserAsync();
+
             if (ModelState.IsValid)
             {
+                day.User = user;
+                day.Date = DateTime.Now;
                 _context.Add(day);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

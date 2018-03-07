@@ -21,10 +21,17 @@ namespace TakeABreak.Models
         [Required]
         public int PointsGoal { get; set; }
 
+        public int? PointsEarned { get; set; }
+
         public int? ProductivityRating { get; set; }
 
         public string Reminders { get; set; }
 
         public virtual ICollection<Break> Breaks { get; set; }
+
+        public Day()
+        {
+            PointsEarned = 0;
+        }
     }
 }

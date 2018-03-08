@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Daily Break Goal</h2>
 
-<h4>Day</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,19 +13,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DayId" />
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="PointsGoal" class="control-label"></label>
                 <input asp-for="PointsGoal" class="form-control" />
                 <span asp-validation-for="PointsGoal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductivityRating" class="control-label"></label>
-                <input asp-for="ProductivityRating" class="form-control" />
-                <span asp-validation-for="ProductivityRating" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reminders" class="control-label"></label>

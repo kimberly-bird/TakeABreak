@@ -77,6 +77,7 @@ namespace TakeABreak.Controllers
             return View(day);
         }
 
+
         // GET: Days/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -100,6 +101,10 @@ namespace TakeABreak.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DayId,Date,PointsGoal,ProductivityRating,Reminders")] Day day)
         {
+            ModelState.Remove("User");
+            //gets the current user
+            ApplicationUser user = await GetCurrentUserAsync();
+
             if (id != day.DayId)
             {
                 return NotFound();
@@ -109,6 +114,8 @@ namespace TakeABreak.Controllers
             {
                 try
                 {
+                    day.User = user;
+                    day.Date = DateTime.Now;
                     _context.Update(day);
                     await _context.SaveChangesAsync();
                 }

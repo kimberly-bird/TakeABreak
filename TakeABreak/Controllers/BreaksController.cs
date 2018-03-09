@@ -13,10 +13,12 @@ namespace TakeABreak.Controllers
     public class BreaksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly BreakType _breakType;
 
-        public BreaksController(ApplicationDbContext context)
+        public BreaksController(ApplicationDbContext context, BreakType breakType)
         {
             _context = context;
+            _breakType = breakType;
         }
 
         // GET: Breaks
@@ -63,12 +65,32 @@ namespace TakeABreak.Controllers
         {
             if (ModelState.IsValid)
             {
+                // get current DayId
+                @break.DayId = _context.Day
+                .OrderByDescending(d => d.Date)
+                .First().DayId;
+                
+                // get day object
+                var currentDaysPoints = _context.Day
+                .OrderByDescending(d => d.Date)
+                .First();
+
+                // get selected break type
+                var selectedBreakType = _context.BreakType.SingleOrDefault(b => b.BreakTypeId == @break.BreakTypeId);
+
+                // calculate points earned for break
+                var pointsEarned = selectedBreakType.PointValue * @break.Length;
+
+                // add points to Day.PointsEarned property
+                currentDaysPoints.PointsEarned += pointsEarned;
+                
+                // add break
                 _context.Add(@break);
+                _context.Update(currentDaysPoints);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BreakTypeId"] = new SelectList(_context.BreakType, "BreakTypeId", "Type", @break.BreakTypeId);
-            ViewData["DayId"] = new SelectList(_context.Day, "DayId", "UserId", @break.DayId);
             return View(@break);
         }
 

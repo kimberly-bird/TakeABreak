@@ -21,9 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.BreakType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Day)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.BreakType.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Day.UserId)
+                @Html.DisplayFor(modelItem => item.Day.User.FirstName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BreakId">Edit</a> |

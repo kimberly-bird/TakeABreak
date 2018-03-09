@@ -36,6 +36,7 @@ namespace TakeABreak
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<BreakType, BreakType>();
 
             services.AddMvc();
 

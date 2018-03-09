@@ -67,6 +67,31 @@ namespace TakeABreak.Data
                     }
                     context.SaveChanges();
                 }
+
+                if (!context.Break.Any())
+                {
+                    var breaks = new Break[]
+                    {
+                        new Break {
+                            Time = DateTime.Now,
+                            Length = 10,
+                            DayId = 2,
+                            BreakTypeId = 3
+                        },
+                        new Break {
+                            Time = DateTime.Now,
+                            Length = 10,
+                            DayId = 2,
+                            BreakTypeId = 3
+                        }
+                    };
+
+                    foreach (Break i in breaks)
+                    {
+                        context.Break.Add(i);
+                    }
+                    context.SaveChanges();
+                }
             }
         }
     }

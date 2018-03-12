@@ -1,40 +1,19 @@
 ﻿@model TakeABreak.Models.DashboardViewModel
 @using Microsoft.AspNetCore.Identity
 
-    @inject SignInManager<ApplicationUser> SignInManager
-    @inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
-    @{
-        ViewData["Title"] = "Home";
-    }
+@{
+    ViewData["Title"] = "Home";
+}
 
+<tr>
+    <td colspan="2">
+        <a href="/Account/Login">Sign up</a> to get started.
+    </td>
+</tr>
 
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <tr>
-            <td>
-                <ul>
-                    <li><a href="../Days/Create">Set Daily Break Goal</a></li>
-                    <li><a href="../Breaks/Create">Add a Break</a></li>
-                    <li><a>View Break History</a></li>
-                </ul>
-            </td>
-
-            <td>
-                @await Component.InvokeAsync("DayDetail")
-
-            </td>
-        </tr>
-    }
-    else
-    {
-        <tr>
-            <td colspan="2">
-                <a href="/Account/Login">Sign up</a> to get started.
-            </td>
-        </tr>
-
-    }
 
 
 

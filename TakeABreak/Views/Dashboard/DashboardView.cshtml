@@ -1,0 +1,24 @@
+﻿@model TakeABreak.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "DashboardView";
+}
+
+<tr>
+    <td>
+        <ul>
+            <li><a href="../Days/Create">Set Daily Break Goal</a></li>
+            <li><a href="../Breaks/Create">Add a Break</a></li>
+            <li><a>View Break History</a></li>
+        </ul>
+    </td>
+
+    <td>
+        @await Component.InvokeAsync("DayDetail")
+    </td>
+</tr>
+
+
+
+
+

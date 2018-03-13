@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TakeABreak.Data;
 using TakeABreak.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace TakeABreak.ViewComponents
 {
@@ -29,17 +31,18 @@ namespace TakeABreak.ViewComponents
             var items = await GetItemsAsync();
             return View(items);
         }
-        
+
         private async Task<Day> GetItemsAsync()
         {
             ApplicationUser user = await GetCurrentUserAsync();
-
             var day = await _context.Day
                 .Where(u => u.User == user)
                 .OrderByDescending(d => d.Date)
-                .FirstAsync();
-
+                .FirstOrDefaultAsync();
+           
             return day;
         }
+
+
     }
 }

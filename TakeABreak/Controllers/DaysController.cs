@@ -28,7 +28,11 @@ namespace TakeABreak.Controllers
         // GET: Days
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Day.ToListAsync());
+            ApplicationUser user = await GetCurrentUserAsync();
+
+            return View(await _context.Day
+                .Where(u => u.User == user)
+                .ToListAsync());
         }
 
         // GET: Days/Details/5

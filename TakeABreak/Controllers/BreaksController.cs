@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,18 +15,26 @@ namespace TakeABreak.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly BreakType _breakType;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public BreaksController(ApplicationDbContext context, BreakType breakType)
+        public BreaksController(ApplicationDbContext context, BreakType breakType, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _breakType = breakType;
+            _userManager = userManager;
         }
+
+        // This task retrieves the currently authenticated user
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Breaks
         public async Task<IActionResult> Index()
         {
+            ApplicationUser user = await GetCurrentUserAsync();
             var applicationDbContext = _context.Break.Include(b => b.BreakType).Include(d => d.Day);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await applicationDbContext
+                .Where(u => u.Day.User == user)
+                .ToListAsync());
         }
 
         // GET: Breaks/Details/5

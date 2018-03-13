@@ -1,5 +1,13 @@
 ﻿@model TakeABreak.Models.Day
 
+@if (Model == null)
+{
+    <h2>Welcome to Take a Break!</h2>
+    <a asp-action="Create" asp-controller="Days">Click here to get started</a>
+
+} 
+else
+{
 <h3>Daily Goal</h3>
 <ul>
     <li>Date: @Model.Date</li>
@@ -8,4 +16,8 @@
     <li>@Model.Reminders</li>
     <li><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></li>
 </ul>
+
+}
+
+
 

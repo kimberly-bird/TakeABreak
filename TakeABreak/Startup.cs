@@ -61,9 +61,9 @@ namespace TakeABreak
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("create", "create/",
+                         defaults: new { controller = "Break", action = "Create" });
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

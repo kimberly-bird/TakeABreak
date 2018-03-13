@@ -4,7 +4,7 @@
 {
     <h2>Welcome to Take a Break!</h2>
     <a asp-action="Create" asp-controller="Days">Get started here</a>
-} 
+}
 else
 {
     <h2>Daily Goal</h2>
@@ -13,7 +13,22 @@ else
     <p>I've earned: @Model.PointsEarned points today</p>
     <p>Today's goal: @Model.PointsGoal points</p>
     <p>Reminders: @Model.Reminders</p>
-    <p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></p>
+
+        @if (Model.ProductivityRating == null)
+        {
+            <ul>
+                <p>How productive have you been today?</p>
+                <li><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Add productivity rating</a></li>
+            </ul>
+        }
+        else
+        {
+            <p>Productivity Rating: @Model.ProductivityRating</p>
+        }
+    <ul>
+        <li><p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></p></li>
+        <li><p><a href="../Breaks/Create">Add a Break to Today's Goal</a></p></li>
+    </ul>
 }
 
 

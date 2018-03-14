@@ -39,7 +39,24 @@ namespace TakeABreak.ViewComponents
                 .Where(u => u.User == user)
                 .OrderByDescending(d => d.Date)
                 .FirstOrDefaultAsync();
-           
+
+            // compare date, if they don't match, new instance of the daily goal and update Db 
+            if (day.Date.DayOfYear < DateTime.Now.DayOfYear)
+            {
+                Day newDay = new Day
+                {
+                    User = user,
+                    Date = DateTime.Now,
+                    PointsGoal = day.PointsGoal,
+                    PointsEarned = 0,
+                    ProductivityRating = null,
+                    Reminders = day.Reminders
+                };
+                _context.Add(newDay);
+                await _context.SaveChangesAsync();
+                return newDay;
+            }
+
             return day;
         }
 

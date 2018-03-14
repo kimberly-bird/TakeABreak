@@ -9,7 +9,7 @@ else
 {
     <h2>Daily Goal</h2>
 
-    <p>Date: @Model.Date</p>
+    <p>Today is @Model.Date.DayOfWeek, @Model.Date.Month/@Model.Date.Day/@Model.Date.Year</p>
     <p>I've earned: @Model.PointsEarned points today</p>
     <p>Today's goal: @Model.PointsGoal points</p>
     <p>Reminders: @Model.Reminders</p>

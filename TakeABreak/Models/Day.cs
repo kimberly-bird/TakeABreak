@@ -24,6 +24,7 @@ namespace TakeABreak.Models
 
         public int? PointsEarned { get; set; }
 
+        [Range(0, 5)]
         public int? ProductivityRating { get; set; }
 
         public string Reminders { get; set; }

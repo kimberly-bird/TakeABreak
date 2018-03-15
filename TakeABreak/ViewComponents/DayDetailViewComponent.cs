@@ -35,6 +35,7 @@ namespace TakeABreak.ViewComponents
         private async Task<Day> GetItemsAsync()
         {
             ApplicationUser user = await GetCurrentUserAsync();
+
             var day = await _context.Day
                 .Where(u => u.User == user)
                 .OrderByDescending(d => d.Date)

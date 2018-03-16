@@ -12,6 +12,8 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DayId" />
+            <input type="hidden" asp-for="Date" />
+            <input type="hidden" asp-for="PointsEarned" />
             <div class="form-group">
                 <label asp-for="PointsGoal" class="control-label"></label>
                 <input asp-for="PointsGoal" class="form-control" />

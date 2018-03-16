@@ -104,7 +104,7 @@ namespace TakeABreak.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DayId,Date,PointsGoal,ProductivityRating,Reminders")] Day day)
+        public async Task<IActionResult> Edit(int id, [Bind("DayId,Date,PointsGoal,PointsEarned,ProductivityRating,Reminders")] Day day)
         {
             ModelState.Remove("User");
             //gets the current user
@@ -120,7 +120,6 @@ namespace TakeABreak.Controllers
                 try
                 {
                     day.User = user;
-                    day.Date = DateTime.Now;
                     _context.Update(day);
                     await _context.SaveChangesAsync();
                 }

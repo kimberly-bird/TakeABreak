@@ -27,5 +27,6 @@ namespace TakeABreak.Models
         public int BreakTypeId { get; set; }
         public string Type { get; set; }
         public int PointValue { get; set; }
+
     }
 }

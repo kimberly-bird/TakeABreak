@@ -1,0 +1,24 @@
+﻿@model List<TakeABreak.Models.ReportsViewModel>
+
+@if (Model == null)
+{
+    <h2>Welcome to Take a Break!</h2>
+    <a asp-action="Create" asp-controller="Days">Get started here</a>
+}
+else
+{
+    @foreach (var prodDay in Model)
+    {
+        <div>
+            <ul>
+                <li>Date: @prodDay.Date</li>
+                <li>Productivity Rating: @prodDay.ProductivityRating</li>
+                <li>Points earned: @prodDay.PointsEarned</li>
+                <li>Points goal: @prodDay.PointsGoal</li>
+            </ul>
+        </div>
+    }
+}
+
+
+

@@ -91,6 +91,7 @@ namespace TakeABreak.Controllers
             }
 
             var day = await _context.Day.SingleOrDefaultAsync(m => m.DayId == id);
+
             if (day == null)
             {
                 return NotFound();

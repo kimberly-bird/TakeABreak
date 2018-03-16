@@ -11,18 +11,22 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <tr>
-        <td>
-            @await Component.InvokeAsync("DayDetail")
-        </td>
+<tr>
+    <td>
+        @await Component.InvokeAsync("DayDetail")
+    </td>
 
-        <td>
-            <ul>
-                <li><a href="../Days/Create">Set My Daily Break Goal</a></li>
-                <li><a>View My Break History</a></li>
-            </ul>
-        </td>
-    </tr>
+    <td>
+        @await Component.InvokeAsync("Reports")
+    </td>
+
+    <td>
+        <ul>
+            <li><a href="../Days/Create">Set My Daily Break Goal</a></li>
+            <li><a>View My Break History</a></li>
+        </ul>
+    </td>
+</tr>
 }
 else
 {

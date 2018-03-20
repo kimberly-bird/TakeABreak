@@ -1,0 +1,21 @@
+{
+  "name": "lib",
+  "version": "1.0.0",
+  "main": "site.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "amcharts3": "^3.21.12",
+    "chart.js": "^2.7.2",
+    "mdbootstrap": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kimberly-bird/TakeABreak.git"
+  },
+  "devDependencies": {},
+  "description": ""
+}

@@ -8,9 +8,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "amcharts3": "^3.21.12",
-    "chart.js": "^2.7.2",
-    "mdbootstrap": "^4.5.0"
+    "chart.js": "^2.7.2"
   },
   "repository": {
     "type": "git",

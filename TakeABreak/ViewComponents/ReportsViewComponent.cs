@@ -35,16 +35,16 @@ namespace TakeABreak.ViewComponents
             // get current user
             ApplicationUser user = await GetCurrentUserAsync();
 
-            // get days where productivity rating is greater than 3
+            // get last 5 days where productivity rating is greater than 0
             var productiveDay = await _context.Day
                 .Where(u => u.User == user)
-                .Where(p => p.ProductivityRating > 3)
+                .Where(p => p.ProductivityRating > 0)
                 .OrderByDescending(d => d.Date)
+                .Take(5)
                 .ToListAsync();
 
-            // ienumerable collection of reportviewmodels
+            // list of reportviewmodels
             List<ReportsViewModel> productiveReports = new List<ReportsViewModel>();
-
            
             foreach (var prodDay in productiveDay)
             {

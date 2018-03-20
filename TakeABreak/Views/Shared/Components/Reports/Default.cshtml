@@ -7,19 +7,118 @@
 }
 else
 {
-    <canvas id="barChart"></canvas>
+    <div class="container">
+        <h3 class="text-center">Last 5 Days of Breaks</h3>
+        <div class="row">
+            <div class="col-sm-6"><canvas id="bar-chart-productivity" width="800" height="450"></canvas></div>
 
-    @*@foreach (var prodDay in Model)
-    {
-        <div>
-            <ul>
-                <li>Date: @prodDay.Date</li>
-                <li>Productivity Rating: @prodDay.ProductivityRating</li>
-                <li>Points earned: @prodDay.PointsEarned</li>
-                <li>Points goal: @prodDay.PointsGoal</li>
-            </ul>
+            <div class="col-sm-6"><canvas id="bar-chart-goals" width="800" height="450"></canvas></div>
         </div>
-    }*@
+    </div>
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        @{
+            var ratingList = new List<int>();
+            var dayRating = new List<string>();
+            var goal = new List<int>();
+            var earned = new List<int>();
+
+            @foreach (var prodDay in Model)
+            {
+                ratingList.Add(@prodDay.ProductivityRating);
+                dayRating.Add((@prodDay.Date.DayOfWeek).ToString());
+                goal.Add(@prodDay.PointsGoal);
+                earned.Add(@prodDay.PointsEarned);
+            }
+        }
+
+        var productivityChart = new Chart(document.getElementById("bar-chart-productivity"), {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(@dayRating)),
+                datasets: [
+                    {
+                    label: "Productivity Rating",
+                    backgroundColor: ["#74828F", "#96C0CE", "#BEB9B5", "#C25B56", "#525564"],
+                    data: @Html.Raw(Json.Serialize(@ratingList))
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Have you been productive?'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+
+                    }]
+                },
+                layout: {
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+
+            }
+        });
+
+        var goalsChart = new Chart(document.getElementById("bar-chart-goals"), {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(@dayRating)),
+            datasets: [
+                {
+                label: "Goal",
+                backgroundColor: ["#74828F", "#96C0CE", "#BEB9B5", "#C25B56", "#525564"],
+                data: @Html.Raw(Json.Serialize(@goal)),
+                type: 'line',
+                fill: false
+
+                } ,  {
+                label: "Points Earned",
+                backgroundColor: ["#74828F", "#96C0CE", "#BEB9B5", "#C25B56", "#525564"],
+                type: "bar",
+                data: @Html.Raw(Json.Serialize(@earned))
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Have you reached your goals?'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+
+                }]
+            },
+            layout: {
+                padding: {
+                    left: 60,
+                    right: 60,
+                    top: 10,
+                    bottom: 10
+                }
+            }
+
+            }
+        });
+
+
+    </script>
+
 }
 
 

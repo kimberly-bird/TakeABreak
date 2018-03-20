@@ -7,29 +7,35 @@
 }
 else
 {
-    <h2>Daily Goal</h2>
+    <div class="container">
+        <h2 class="text-center">Break Dashboard</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Today is @Model.Date.DayOfWeek, @Model.Date.Month/@Model.Date.Day/@Model.Date.Year</p>
+                <p>I've earned: @Model.PointsEarned points today</p>
+                <p><a href="../Breaks/Create">Add a Break to Today's Goal</a></p>
+                <p>Today's goal: @Model.PointsGoal points</p>
+                <p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></p>
+                <p>Reminders: @Model.Reminders</p>
+            </div>
 
-    <p>Today is @Model.Date.DayOfWeek, @Model.Date.Month/@Model.Date.Day/@Model.Date.Year</p>
-    <p>I've earned: @Model.PointsEarned points today</p>
-    <p>Today's goal: @Model.PointsGoal points</p>
-    <p>Reminders: @Model.Reminders</p>
-
-        @if (Model.ProductivityRating == null)
-        {
-            <ul>
-                <p>How productive have you been today?</p>
-                <li><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Add productivity rating</a></li>
-            </ul>
-        }
-        else
-        {
-            <p>Productivity Rating: @Model.ProductivityRating</p>
-        }
-    <ul>
-        <li><p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></p></li>
-        <li><p><a href="../Breaks/Create">Add a Break to Today's Goal</a></p></li>
-    </ul>
+            <div class="col-sm-6">
+                @if (Model.ProductivityRating == null)
+                {
+                    <ul>
+                        <p>How productive have you been today?</p>
+                        <li><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Add productivity rating</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <p>Productivity Rating: @Model.ProductivityRating</p>
+                }
+            </div>
+        </div>
+    </div>
 }
+
 
 
 

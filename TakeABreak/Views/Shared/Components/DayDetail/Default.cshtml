@@ -9,17 +9,19 @@ else
 {
     <div class="container">
         <h2 class="text-center">Break Dashboard</h2>
-        <div class="row">
-            <div class="col-sm-6">
+        <div class="row text-center">
+            <div class="col-md-4 break-info">
                 <p>Today is @Model.Date.DayOfWeek, @Model.Date.Month/@Model.Date.Day/@Model.Date.Year</p>
                 <p>I've earned: @Model.PointsEarned points today</p>
                 <p><a href="../Breaks/Create">Add a Break to Today's Goal</a></p>
+            </div>
+            <div class="col-md-4 break-info">
+                <p>Reminders: @Model.Reminders</p>
                 <p>Today's goal: @Model.PointsGoal points</p>
                 <p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days">Edit Daily Goal</a></p>
-                <p>Reminders: @Model.Reminders</p>
             </div>
+            <div class="col-md-4 break-info">
 
-            <div class="col-sm-6">
                 @if (Model.ProductivityRating == null)
                 {
                     <ul>
@@ -32,6 +34,7 @@ else
                     <p>Productivity Rating: @Model.ProductivityRating</p>
                 }
             </div>
+
         </div>
     </div>
 }

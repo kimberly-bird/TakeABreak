@@ -17,7 +17,7 @@ namespace TakeABreak.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Welcome to Take a Break - a productivity app.";
+            ViewData["Message"] = "Welcome to Take a Break";
 
             return View();
         }

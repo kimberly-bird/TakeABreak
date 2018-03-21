@@ -1,42 +1,63 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Message"]</h2>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">@ViewData["Message"]</h1>
+        <p class="text-center"><a class="btn btn-primary btn-lg" href="../Account/Register" role="button">Get Started</a></p>
+    </div>
+</div>
+
+
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <p>
-                This app came about when I was reading a book called <em>
-                    <a href="http://www.danpink.com/books/when/" target="_blank">
-                        When: The Scientific
-                        Secrets to Perfect Timing
-                    </a>
-                </em>  by Daniel Pink. He analyzes how most humans work on a similar daily rhythm. Most of us are productive in the mornings, but after lunch, we experience the afternoon "slump". Pink finds through research that individuals who take regular breaks throughout the day are able to combat that slump and improve their overall productivity. He presents research showing when students in Denmark took a yearly exam in the morning, they outperformed a similar group of students who took the exam in the afternoon. But, when students were given a 20 minute break before the afternoon exam, the afternoon group outperformed the morning group!
-            </p>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="thumbnail text-justify">
+                <div class="caption">
+                    <h3>Original Inspiration</h3>
+                    <p>
+                        This app came about when I was reading a book called <em>
+                            <a href="http://www.danpink.com/books/when/" target="_blank">
+                                When: The Scientific
+                                Secrets to Perfect Timing
+                            </a>
+                        </em>  by Daniel Pink. He analyzes how most humans work on a similar daily rhythm. <strong>Most of us are productive in the mornings, but after lunch, we experience the afternoon "slump".</strong> Pink finds through research that individuals who take regular breaks throughout the day are able to combat that slump and improve their overall productivity. He presents research showing when students in Denmark took a yearly exam in the morning, they outperformed a similar group of students who took the exam in the afternoon. But, when students were given a 20 minute break before the afternoon exam, the afternoon group outperformed the morning group!
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-5 col-sm-12">
-            <p>
-                I have not always been regular about taking breaks and have seen my personal productivity improve when I take regular breaks. It's often coming
-                back from a break when I'm able to make great progress on something that had been slowing me down earlier in the day. Alongside regular daily
-                breaks, I hope that this app can help us move more throughout the day, as well as avoid the sad desk lunch.
-            </p>
+        <div class="col-sm-12 col-md-4">
+            <div class="thumbnail text-justify">
+                <img src="~/images/clock.png" alt="clock image">
+                <div class="caption">
+                    <p>
+                        I have not always been regular about taking breaks and have seen my personal productivity improve when I take regular breaks. It's often coming back from a break when I'm able to make great progress on something that had been slowing me down earlier in the day. Alongside regular daily breaks, I hope that this app can help us move more throughout the day, as well as avoid the sad desk lunch.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-7 col-sm-12">
-            <iframe src="https://player.vimeo.com/video/92513451"
-                    width="640"
-                    height="360"
-                    frameborder="0"
-                    webkitallowfullscreen
-                    mozallowfullscreen
-                    allowfullscreen></iframe>
-            <p>
-                <a href="https://vimeo.com/92513451">Sad Desk Lunch: Is This How You Want to Die?</a> from
-                <a href="https://vimeo.com/atlanticvideo">The Atlantic</a> on
-                <a href="https://vimeo.com">Vimeo</a>.
-            </p>
+        <div class="col-md-8 col-sm-12 text-center">
+            <div class="thumbnail">
+                <div class="caption">
+                    <iframe src="https://player.vimeo.com/video/92513451"
+                            width="640"
+                            height="360"
+                            frameborder="0"
+                            webkitallowfullscreen
+                            mozallowfullscreen
+                            allowfullscreen></iframe>
+                    <p>
+                        <a href="https://vimeo.com/92513451">Sad Desk Lunch: Is This How You Want to Die?</a> from
+                        <a href="https://vimeo.com/atlanticvideo">The Atlantic</a> on
+                        <a href="https://vimeo.com">Vimeo</a>.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

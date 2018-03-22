@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Breaks</h2>
+<h2 class="text-center">Break History</h2>
 
 <p>
     <a asp-action="Create">Add a New Break</a>
@@ -35,10 +35,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BreakType.Type)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BreakId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.BreakId">Delete</a>
             </td>
         </tr>
 }

@@ -209,9 +209,7 @@
 }
 
 .about-hero-image {
-    max-height: 450px;
-    margin-top: -70px;
-    margin-bottom: -70px;
+    max-width: 300px;
     align-items: center;
 }
 

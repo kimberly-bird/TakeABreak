@@ -100,7 +100,7 @@ namespace TakeABreak.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BreakTypeId"] = new SelectList(_context.BreakType, "BreakTypeId", "Type", @break.BreakTypeId);
-            return View(@break);
+            return RedirectToAction(nameof(HomeController.About), "Home");
         }
 
         // GET: Breaks/Edit/5

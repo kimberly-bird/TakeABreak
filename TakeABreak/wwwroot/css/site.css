@@ -233,3 +233,19 @@
     margin: -10px;
 }
 
+.register-form {
+    margin: 10px;
+}
+
+.login-form {
+    margin: 10px;
+}
+
+.login-image {
+    max-height: 250px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #BEB9B5;
+}
+

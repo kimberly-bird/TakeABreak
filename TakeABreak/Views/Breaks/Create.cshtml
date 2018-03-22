@@ -4,49 +4,78 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Add a New Break</h2>
+<h2 class="text-center">Add a New Break</h2>
 
 <hr />
 
 <div class="row">
-    <div class="col-sm-6 col-md-5">
+    <div class="col-sm-12 col-md-6">
         <div class="thumbnail">
             <div class="caption">
                 <h3 class="text-center">How do break points work?</h3>
-                <p>Break length (in minutes) * Break point value</p>
-                <p>Break point values (points per minute)</p>
-                <ul>
-                    <li>I took a break: 1pt</li>
-                    <li>I moved around: 3pts</li>
-                    <li>I talked to someone: 3pts</li>
-                    <li>I went outside: 3pts</li>
-                    <li>I took a tech free break: 5pts</li>
-                    <li>I took a lunch break: 1pt</li>
-                    <li>I took a lunch break away from my desk: 3pts</li>
-                </ul>
+                <hr />
+                <p class="text-center">Break length (in minutes) * Break point value</p>
+                <table class="table table-condensed table-striped table-responsive" >
+                    <thead>
+                        <tr>
+                            <th>Break Type</th>
+                            <th>Point value (points per minute)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>I took a break</td>
+                            <td>1 point</td>
+                        </tr>
+                        <tr>
+                            <td>I moved around</td>
+                            <td>3 points</td>
+                        </tr>
+                        <tr>
+                            <td>I talked to someone</td>
+                            <td>3 points</td>
+                        </tr>
+                        <tr>
+                            <td>I went outside</td>
+                            <td>3 points</td>
+                        </tr>
+                        <tr>
+                            <td>I took a tech free break</td>
+                            <td>5 points</td>
+                        </tr>
+                        <tr>
+                            <td>I took a lunch break</td>
+                            <td>1 point</td>
+                        </tr>
+                        <tr>
+                            <td>I took a lunch break away from my desk</td>
+                            <td>3 points</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-12 col-md-4 col-md-offset-1">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Time" class="control-label"></label>
+                <label asp-for="Time" class="control-label">Break Day and Time</label>
                 <input asp-for="Time" class="form-control" />
                 <span asp-validation-for="Time" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Length" class="control-label"></label>
+                <label asp-for="Length" class="control-label">Break Length (in minutes)</label>
                 <input asp-for="Length" class="form-control" />
                 <span asp-validation-for="Length" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BreakTypeId" class="control-label"></label>
+                <label asp-for="BreakTypeId" class="control-label">Break Type</label>
                 <select asp-for="BreakTypeId" class="form-control" asp-items="ViewBag.BreakTypeId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

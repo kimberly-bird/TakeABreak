@@ -8,9 +8,6 @@
     ViewData["Title"] = "Home";
 }
 
-
-@if (SignInManager.IsSignedIn(User))
-{
 <tr>
     <td>
         @await Component.InvokeAsync("DayDetail")
@@ -21,16 +18,7 @@
     </td>
 
 </tr>
-}
-else
-{
-    <tr>
-        <td colspan="2">
-            <a href="/Account/Login">Sign up</a> to get started.
-        </td>
-    </tr>
 
-}
 
 
 

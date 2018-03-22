@@ -35,15 +35,16 @@ else
                 <div class="thumbnail thumbnail-dash">
                     <div class="caption">
                         @if (Model.ProductivityRating == null)
-                        {
-                            <h3>How productive have you been today?</h3>
-                            <a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days" class="btn btn-primary" role="button">Add productivity rating</a>
-                        }
-                        else
-                        {
-                            <h3>Productivity Rating:</h3>
-                            <p id="prod-rating">@Model.ProductivityRating</p>
-                        }
+    {
+                    <h3>How productive have you been today?</h3>
+                    <a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days" class="btn btn-primary" role="button">Add Productivity Rating</a>
+}
+else
+{
+                    <h3>Productivity Rating:</h3>
+                    <p>@Model.ProductivityRating</p>
+                    <p><a asp-action="Edit" asp-route-id="@Model.DayId" asp-controller="Days" class="btn btn-primary" role="button">Edit Productivity Rating</a></p>
+}
                     </div>
                 </div>
             </div>
